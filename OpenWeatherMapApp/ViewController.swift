@@ -10,6 +10,8 @@ import UIKit
 import OpenWeatherMapApi
 
 class ViewController: UIViewController {
+    fileprivate let LAST_SEARCH_TERM_KEY = "LAST_SEARCH_TERM"
+    
     @IBOutlet weak var tfCityCountry: UITextField!
     @IBOutlet weak var btnFetch: UIButton!
     @IBOutlet weak var indFetching: UIActivityIndicatorView!
@@ -17,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var panelWeatherInfo: UIView!
     @IBOutlet weak var img: UIImageView!
     
-    fileprivate let owm = OpenWeatherMap(apiKey : nil) // TODO: User Configurable at some point, need refactoring is we do
+    fileprivate let owm = OpenWeatherMap(apiKey : nil)
     fileprivate var isFetching : Bool = false {
         willSet(fetching) {
             if fetching {
@@ -50,6 +52,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         owm.delegate = self
+        
+        if let lastSearchTerm = UserDefaults.standard.string(forKey: LAST_SEARCH_TERM_KEY) {
+            tfCityCountry.text = lastSearchTerm
+            fetchWeatherTouched(nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,7 +73,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func fetchWeatherTouched(_ sender: UIButton) {
+    @IBAction func fetchWeatherTouched(_ sender: UIButton!) {
         guard let components = tfCityCountry.text?.components(separatedBy: ",") else {
             showAlert(msg: "Must Enter A Search String")
             return
@@ -110,6 +117,8 @@ extension ViewController : OpenWeatherMapDelegate {
     public func hasWeatherData(weather:WeatherResponse) {
         isFetching = false
         weatherInfo = weather
+        
+        UserDefaults.standard.set(tfCityCountry.text!, forKey: LAST_SEARCH_TERM_KEY)
         
         if let iconId = weatherInfo?.weathers?[0].icon {
             do {

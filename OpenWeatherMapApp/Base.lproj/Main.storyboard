@@ -53,13 +53,6 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-CR-5ag">
                                 <rect key="frame" x="16" y="58" width="343" height="589"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOk-FP-n9U" userLabel="ImageHolder">
-                                        <rect key="frame" x="8" y="0.0" width="327" height="55"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="7UM-lk-brQ"/>
-                                        </constraints>
-                                    </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vmp-z8-m8X">
                                         <rect key="frame" x="8" y="63" width="335" height="526"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,16 +60,23 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refresh-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0Ki-6R-6CG">
+                                        <rect key="frame" x="8" y="8" width="327" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="Itm-cY-g6x"/>
+                                            <constraint firstAttribute="width" constant="327" id="bS1-s1-iMt"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="oOk-FP-n9U" firstAttribute="top" secondItem="Op6-CR-5ag" secondAttribute="top" id="0zR-Nb-wvy"/>
                                     <constraint firstAttribute="trailing" secondItem="Vmp-z8-m8X" secondAttribute="trailing" id="3aq-3E-rdz"/>
-                                    <constraint firstAttribute="trailing" secondItem="oOk-FP-n9U" secondAttribute="trailing" constant="8" id="5Ma-Nn-gI2"/>
-                                    <constraint firstItem="Vmp-z8-m8X" firstAttribute="top" secondItem="oOk-FP-n9U" secondAttribute="bottom" constant="8" id="GP1-6e-hFk"/>
+                                    <constraint firstItem="Vmp-z8-m8X" firstAttribute="top" secondItem="0Ki-6R-6CG" secondAttribute="bottom" constant="8" id="6Y5-9C-qkD"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Ki-6R-6CG" secondAttribute="trailing" constant="8" id="84X-iL-sY6"/>
                                     <constraint firstAttribute="bottom" secondItem="Vmp-z8-m8X" secondAttribute="bottom" id="YKW-Pd-EQv"/>
                                     <constraint firstItem="Vmp-z8-m8X" firstAttribute="leading" secondItem="Op6-CR-5ag" secondAttribute="leading" constant="8" id="dff-ac-4AY"/>
-                                    <constraint firstItem="oOk-FP-n9U" firstAttribute="leading" secondItem="Op6-CR-5ag" secondAttribute="leading" constant="8" id="spE-gY-HXZ"/>
+                                    <constraint firstItem="0Ki-6R-6CG" firstAttribute="leading" secondItem="Op6-CR-5ag" secondAttribute="leading" constant="8" id="reL-xR-U2x"/>
+                                    <constraint firstItem="0Ki-6R-6CG" firstAttribute="top" secondItem="Op6-CR-5ag" secondAttribute="top" constant="8" id="tTR-WE-LpG"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -97,8 +97,8 @@
                     </view>
                     <connections>
                         <outlet property="btnFetch" destination="n9B-st-MTe" id="lPe-H3-0SL"/>
+                        <outlet property="img" destination="0Ki-6R-6CG" id="bd0-m7-bdA"/>
                         <outlet property="indFetching" destination="LFW-Nu-GFI" id="1AR-4S-fA6"/>
-                        <outlet property="panelWeatherIcon" destination="oOk-FP-n9U" id="rDu-sc-A4r"/>
                         <outlet property="panelWeatherInfo" destination="Op6-CR-5ag" id="WM0-dG-6dF"/>
                         <outlet property="tfCityCountry" destination="2mm-0t-egN" id="wao-or-KZV"/>
                         <outlet property="weatherDump" destination="Vmp-z8-m8X" id="c2E-a1-cPg"/>
@@ -109,4 +109,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="refresh-icon" width="512" height="512"/>
+    </resources>
 </document>

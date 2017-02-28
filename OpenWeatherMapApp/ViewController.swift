@@ -13,11 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfCityCountry: UITextField!
     @IBOutlet weak var btnFetch: UIButton!
     @IBOutlet weak var indFetching: UIActivityIndicatorView!
-    @IBOutlet weak var panelWeatherIcon: UIView!
     @IBOutlet weak var weatherDump: UITextView!
     @IBOutlet weak var panelWeatherInfo: UIView!
+    @IBOutlet weak var img: UIImageView!
     
-    private let owm = OpenWeatherMap() // TODO: User Configurable at some point, need refactoring is we do
+    fileprivate let owm = OpenWeatherMap() // TODO: User Configurable at some point, need refactoring is we do
     fileprivate var isFetching : Bool = false {
         willSet(fetching) {
             if fetching {
@@ -33,11 +33,13 @@ class ViewController: UIViewController {
         }
     }
     
-    fileprivate var hasWeatherInfo : Bool = false {
-        willSet(hasWeather) {
+    fileprivate var weatherInfo : WeatherResponse? = nil {
+        willSet(newWeatherInfo) {
             isFetching = false // just in case
-            if hasWeather {
+            if newWeatherInfo != nil {
                 panelWeatherInfo.isHidden = false
+                weatherDump.text = "\(newWeatherInfo)"
+                img.image = UIImage(named: "refresh-icon")
             } else {
                 panelWeatherInfo.isHidden = true
             }
@@ -55,14 +57,23 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    fileprivate func showAlert(msg : String) {
+        let alert = UIAlertController(title: "Error", message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:
+        { action in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func fetchWeatherTouched(_ sender: UIButton) {
         guard let components = tfCityCountry.text?.components(separatedBy: ",") else {
-            // TODO : SHOW ERROR! probably forgot to enter something, components returns empty array
+            showAlert(msg: "Must Enter A Search String")
             return
         }
 
         guard components.count >= 1 else {
-            // TODO : SHOW ERROR! Empty String don't count
+            showAlert(msg: "Must Enter A Search String")
             return
         }
         
@@ -73,22 +84,23 @@ class ViewController: UIViewController {
         // one more check
         for element in cleanedQueryParams {
             if element.characters.count == 0 {
-                // TODO : SHOW ERROR! can't have empty
+                showAlert(msg: "Must Enter A Search String")
                 return
             }
         }
         
         do {
             isFetching = true
+            weatherInfo = nil
             try owm.getWeather(for: cleanedQueryParams[0], and: cleanedQueryParams.count>1 ? cleanedQueryParams[1] : nil)
         } catch {
             if let owmError = error as? OpenWeatherMapError {
                 switch owmError {
-                    case .failure(let msg): break // TODO: SHOW ERROR
-                    // future proof
+                    case .failure(let msg):
+                        showAlert(msg: msg)
                 }
             } else {
-                // TODO: SHOW General Error
+                showAlert(msg: "Error Fetching \(error.localizedDescription)")
             }
         }
     }
@@ -97,13 +109,36 @@ class ViewController: UIViewController {
 extension ViewController : OpenWeatherMapDelegate {
     public func hasWeatherData(weather:WeatherResponse) {
         isFetching = false
-        hasWeatherInfo = true
-        weatherDump.text = "\(weather)"
+        weatherInfo = weather
+        
+        if let iconId = weatherInfo?.weathers?[0].icon {
+            do {
+                try owm.getThumnail(id: iconId)
+            } catch {
+                img.image = UIImage(named: "file-broken-icon")
+            }
+        } else {
+            img.image = UIImage(named: "file-broken-icon")
+        }
     }
     
     public func failedToQueryWeather(response: URLResponse?, error: Error?, otherMsg: String?) {
         isFetching = false
-        hasWeatherInfo = false
-        // TODO : Show error
+        weatherInfo = nil
+        showAlert(msg: "Query Failed \(otherMsg)")
+    }
+    
+    func hasThumbnailData(image: UIImage, id : String) {
+        guard let iconId = weatherInfo?.weathers?[0].icon else {
+            return
+        }
+        
+        if iconId.caseInsensitiveCompare(id) == .orderedSame {
+            img.image = image
+        }
+    }
+    
+    func failedToGetThumbnail(response: URLResponse?, error: Error?, otherMsg: String?) {
+        img.image = UIImage(named: "file-broken-icon")
     }
 }

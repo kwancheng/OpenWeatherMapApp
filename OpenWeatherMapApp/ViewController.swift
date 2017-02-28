@@ -46,7 +46,18 @@ class ViewController: UIViewController {
             }
         }
         
-        owm.getWeather(for: cleanedQueryParams[0], and: cleanedQueryParams.count>1 ? cleanedQueryParams[1] : nil)
+        do {
+            try owm.getWeather(for: cleanedQueryParams[0], and: cleanedQueryParams.count>1 ? cleanedQueryParams[1] : nil)
+        } catch {
+            if let owmError = error as? OpenWeatherMapError {
+                switch owmError {
+                    case .failure(let msg): break // TODO: SHOW ERROR
+                    // future proof
+                }
+            } else {
+                // TODO: SHOW General Error
+            }
+        }
     }
 }
 

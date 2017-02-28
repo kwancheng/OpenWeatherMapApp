@@ -51,9 +51,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : OpenWeatherMapDelegate {
-    public func hasWeatherData(responseJson: [String : Any]) {
+    public func hasWeatherData(weather:WeatherResponse) {
     }
-
+    
     public func failedToQueryWeather(response: URLResponse?, error: Error?, otherMsg: String?) {
         print("URL - \(response?.url)")
     }

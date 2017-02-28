@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4826F6236D72DE118BCE936A4992B4FCD891919C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "51479930627E4F5AE4D38D477AB59BF451704883" : 9223372036854775807,
+    "4826F6236D72DE118BCE936A4992B4FCD891919C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AC68DB84-93B4-4945-92AB-BBB7839E38E3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "51479930627E4F5AE4D38D477AB59BF451704883" : "OpenWeatherMapApp\/OpenWeatherMapApi\/",
+    "4826F6236D72DE118BCE936A4992B4FCD891919C" : "OpenWeatherMapApp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "OpenWeatherMapApi",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OpenWeatherMapApi.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kwancheng\/OpenWeatherMapApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4826F6236D72DE118BCE936A4992B4FCD891919C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kwancheng\/OpenWeatherMapApi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "51479930627E4F5AE4D38D477AB59BF451704883"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ use_frameworks!
 workspace 'OpenWeatherMapApi.xcworkspace'
 
 def shared_pods
-  pod 'SwiftyJSON'
+  pod 'Gloss'
 end
 
 target 'OpenWeatherMapApi' do 

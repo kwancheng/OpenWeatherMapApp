@@ -14,6 +14,7 @@
 		983D6CA71E65E66000210367 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 983D6CA51E65E66000210367 /* LaunchScreen.storyboard */; };
 		983D6CB21E65E66000210367 /* OpenWeatherMapAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D6CB11E65E66000210367 /* OpenWeatherMapAppTests.swift */; };
 		983D6CBD1E65E66000210367 /* OpenWeatherMapAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D6CBC1E65E66000210367 /* OpenWeatherMapAppUITests.swift */; };
+		989153201E65E7B600DB32FB /* OpenWeatherMapApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9891531D1E65E7A200DB32FB /* OpenWeatherMapApi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,20 @@
 			remoteGlobalIDString = 983D6C981E65E66000210367;
 			remoteInfo = OpenWeatherMapApp;
 		};
+		9891531C1E65E7A200DB32FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 989153181E65E7A200DB32FB /* OpenWeatherMapApi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 98A2CA231E65E3D30099EB2F;
+			remoteInfo = OpenWeatherMapApi;
+		};
+		9891531E1E65E7B000DB32FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 989153181E65E7A200DB32FB /* OpenWeatherMapApi.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 98A2CA221E65E3D30099EB2F;
+			remoteInfo = OpenWeatherMapApi;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +62,7 @@
 		983D6CB81E65E66000210367 /* OpenWeatherMapAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenWeatherMapAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		983D6CBC1E65E66000210367 /* OpenWeatherMapAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapAppUITests.swift; sourceTree = "<group>"; };
 		983D6CBE1E65E66000210367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		989153181E65E7A200DB32FB /* OpenWeatherMapApi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenWeatherMapApi.xcodeproj; path = OpenWeatherMapApi/OpenWeatherMapApi.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				989153201E65E7B600DB32FB /* OpenWeatherMapApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +94,7 @@
 		983D6C901E65E66000210367 = {
 			isa = PBXGroup;
 			children = (
+				989153181E65E7A200DB32FB /* OpenWeatherMapApi.xcodeproj */,
 				983D6C9B1E65E66000210367 /* OpenWeatherMapApp */,
 				983D6CB01E65E66000210367 /* OpenWeatherMapAppTests */,
 				983D6CBB1E65E66000210367 /* OpenWeatherMapAppUITests */,
@@ -125,6 +143,14 @@
 			path = OpenWeatherMapAppUITests;
 			sourceTree = "<group>";
 		};
+		989153191E65E7A200DB32FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9891531D1E65E7A200DB32FB /* OpenWeatherMapApi.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,6 +165,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9891531F1E65E7B000DB32FB /* PBXTargetDependency */,
 			);
 			name = OpenWeatherMapApp;
 			productName = OpenWeatherMapApp;
@@ -221,6 +248,12 @@
 			mainGroup = 983D6C901E65E66000210367;
 			productRefGroup = 983D6C9A1E65E66000210367 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 989153191E65E7A200DB32FB /* Products */;
+					ProjectRef = 989153181E65E7A200DB32FB /* OpenWeatherMapApi.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				983D6C981E65E66000210367 /* OpenWeatherMapApp */,
@@ -229,6 +262,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9891531D1E65E7A200DB32FB /* OpenWeatherMapApi.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OpenWeatherMapApi.framework;
+			remoteRef = 9891531C1E65E7A200DB32FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		983D6C971E65E66000210367 /* Resources */ = {
@@ -295,6 +338,11 @@
 			isa = PBXTargetDependency;
 			target = 983D6C981E65E66000210367 /* OpenWeatherMapApp */;
 			targetProxy = 983D6CB91E65E66000210367 /* PBXContainerItemProxy */;
+		};
+		9891531F1E65E7B000DB32FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OpenWeatherMapApi;
+			targetProxy = 9891531E1E65E7B000DB32FB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -514,6 +562,7 @@
 				983D6CC31E65E66000210367 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		983D6CC41E65E66000210367 /* Build configuration list for PBXNativeTarget "OpenWeatherMapAppTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +571,7 @@
 				983D6CC61E65E66000210367 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		983D6CC71E65E66000210367 /* Build configuration list for PBXNativeTarget "OpenWeatherMapAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +580,7 @@
 				983D6CC91E65E66000210367 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

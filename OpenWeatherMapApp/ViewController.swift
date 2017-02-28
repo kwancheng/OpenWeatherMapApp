@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var panelWeatherInfo: UIView!
     @IBOutlet weak var img: UIImageView!
     
-    fileprivate let owm = OpenWeatherMap(apiKey : nil)
+    fileprivate let owm = OpenWeatherMap(apiKey : "915bcfb1dd65b28b76914ac920b757e5")
     fileprivate var isFetching : Bool = false {
         willSet(fetching) {
             if fetching {

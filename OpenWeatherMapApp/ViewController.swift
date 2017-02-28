@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var panelWeatherInfo: UIView!
     @IBOutlet weak var img: UIImageView!
     
-    fileprivate let owm = OpenWeatherMap() // TODO: User Configurable at some point, need refactoring is we do
+    fileprivate let owm = OpenWeatherMap(apiKey : nil) // TODO: User Configurable at some point, need refactoring is we do
     fileprivate var isFetching : Bool = false {
         willSet(fetching) {
             if fetching {
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             isFetching = false // just in case
             if newWeatherInfo != nil {
                 panelWeatherInfo.isHidden = false
-                weatherDump.text = "\(newWeatherInfo)"
+                weatherDump.text = "\(newWeatherInfo!)"
                 img.image = UIImage(named: "refresh-icon")
             } else {
                 panelWeatherInfo.isHidden = true

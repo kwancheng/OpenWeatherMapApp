@@ -11,7 +11,38 @@ import OpenWeatherMapApi
 
 class ViewController: UIViewController {
     @IBOutlet weak var tfCityCountry: UITextField!
+    @IBOutlet weak var btnFetch: UIButton!
+    @IBOutlet weak var indFetching: UIActivityIndicatorView!
+    @IBOutlet weak var panelWeatherIcon: UIView!
+    @IBOutlet weak var weatherDump: UITextView!
+    @IBOutlet weak var panelWeatherInfo: UIView!
+    
     private let owm = OpenWeatherMap() // TODO: User Configurable at some point, need refactoring is we do
+    fileprivate var isFetching : Bool = false {
+        willSet(fetching) {
+            if fetching {
+                btnFetch.isEnabled = false
+                btnFetch.setTitle("", for: UIControlState.normal)
+                indFetching.startAnimating()
+            } else {
+                btnFetch.isEnabled = true
+                btnFetch.setTitle("Fetch", for: UIControlState.normal)
+                indFetching.hidesWhenStopped = true
+                indFetching.stopAnimating()
+            }
+        }
+    }
+    
+    fileprivate var hasWeatherInfo : Bool = false {
+        willSet(hasWeather) {
+            isFetching = false // just in case
+            if hasWeather {
+                panelWeatherInfo.isHidden = false
+            } else {
+                panelWeatherInfo.isHidden = true
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +54,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func fetchWeatherTouched(_ sender: UIButton) {
         guard let components = tfCityCountry.text?.components(separatedBy: ",") else {
             // TODO : SHOW ERROR! probably forgot to enter something, components returns empty array
@@ -47,6 +79,7 @@ class ViewController: UIViewController {
         }
         
         do {
+            isFetching = true
             try owm.getWeather(for: cleanedQueryParams[0], and: cleanedQueryParams.count>1 ? cleanedQueryParams[1] : nil)
         } catch {
             if let owmError = error as? OpenWeatherMapError {
@@ -63,9 +96,14 @@ class ViewController: UIViewController {
 
 extension ViewController : OpenWeatherMapDelegate {
     public func hasWeatherData(weather:WeatherResponse) {
+        isFetching = false
+        hasWeatherInfo = true
+        weatherDump.text = "\(weather)"
     }
     
     public func failedToQueryWeather(response: URLResponse?, error: Error?, otherMsg: String?) {
-        print("URL - \(response?.url)")
+        isFetching = false
+        hasWeatherInfo = false
+        // TODO : Show error
     }
 }

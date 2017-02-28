@@ -33,27 +33,75 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9B-st-MTe">
                                 <rect key="frame" x="280" y="20" width="79" height="30"/>
+                                <color key="backgroundColor" red="0.4235568576" green="0.70575629340000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="C9f-F7-7le"/>
                                     <constraint firstAttribute="width" constant="79" id="q08-FG-Iab"/>
                                 </constraints>
-                                <state key="normal" title="Fetch"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Fetch">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="fetchWeatherTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XE3-wL-AOM"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LFW-Nu-GFI">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.4235568576" green="0.70575629340000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Op6-CR-5ag">
+                                <rect key="frame" x="16" y="58" width="343" height="589"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOk-FP-n9U" userLabel="ImageHolder">
+                                        <rect key="frame" x="8" y="0.0" width="327" height="55"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="7UM-lk-brQ"/>
+                                        </constraints>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vmp-z8-m8X">
+                                        <rect key="frame" x="8" y="63" width="335" height="526"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="oOk-FP-n9U" firstAttribute="top" secondItem="Op6-CR-5ag" secondAttribute="top" id="0zR-Nb-wvy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vmp-z8-m8X" secondAttribute="trailing" id="3aq-3E-rdz"/>
+                                    <constraint firstAttribute="trailing" secondItem="oOk-FP-n9U" secondAttribute="trailing" constant="8" id="5Ma-Nn-gI2"/>
+                                    <constraint firstItem="Vmp-z8-m8X" firstAttribute="top" secondItem="oOk-FP-n9U" secondAttribute="bottom" constant="8" id="GP1-6e-hFk"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vmp-z8-m8X" secondAttribute="bottom" id="YKW-Pd-EQv"/>
+                                    <constraint firstItem="Vmp-z8-m8X" firstAttribute="leading" secondItem="Op6-CR-5ag" secondAttribute="leading" constant="8" id="dff-ac-4AY"/>
+                                    <constraint firstItem="oOk-FP-n9U" firstAttribute="leading" secondItem="Op6-CR-5ag" secondAttribute="leading" constant="8" id="spE-gY-HXZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="n9B-st-MTe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5Yd-oM-mWI"/>
+                            <constraint firstItem="Op6-CR-5ag" firstAttribute="top" secondItem="n9B-st-MTe" secondAttribute="bottom" constant="8" id="6Rs-Zf-QaN"/>
+                            <constraint firstItem="Op6-CR-5ag" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="NFx-se-Y51"/>
                             <constraint firstItem="2mm-0t-egN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OmG-gA-x6Y"/>
                             <constraint firstItem="n9B-st-MTe" firstAttribute="leading" secondItem="2mm-0t-egN" secondAttribute="trailing" constant="8" id="PXN-uz-IBR"/>
+                            <constraint firstItem="LFW-Nu-GFI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TEv-uD-0Hp"/>
                             <constraint firstItem="n9B-st-MTe" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="TJn-NN-ljk"/>
+                            <constraint firstItem="LFW-Nu-GFI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ec6-NO-BSF"/>
+                            <constraint firstItem="Op6-CR-5ag" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gum-ij-kkW"/>
                             <constraint firstItem="2mm-0t-egN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lAg-hb-t95"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Op6-CR-5ag" secondAttribute="bottom" constant="20" id="uc7-DH-zJD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnFetch" destination="n9B-st-MTe" id="lPe-H3-0SL"/>
+                        <outlet property="indFetching" destination="LFW-Nu-GFI" id="1AR-4S-fA6"/>
+                        <outlet property="panelWeatherIcon" destination="oOk-FP-n9U" id="rDu-sc-A4r"/>
+                        <outlet property="panelWeatherInfo" destination="Op6-CR-5ag" id="WM0-dG-6dF"/>
                         <outlet property="tfCityCountry" destination="2mm-0t-egN" id="wao-or-KZV"/>
+                        <outlet property="weatherDump" destination="Vmp-z8-m8X" id="c2E-a1-cPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

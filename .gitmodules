@@ -1,0 +1,3 @@
+[submodule "OpenWeatherMapApi"]
+	path = OpenWeatherMapApi
+	url = https://github.com/kwancheng/OpenWeatherMapApi.git

@@ -3,7 +3,7 @@ platform :ios, '10.2'
 
 use_frameworks!
 
-workspace 'OpenWeatherMapApi.xcworkspace'
+workspace 'OpenWeatherMapApp.xcworkspace'
 
 def shared_pods
   pod 'Gloss'
